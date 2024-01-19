@@ -29,6 +29,7 @@
             color: #ff4d6d;
             font-size: 36px;
             margin-bottom: 20px;
+            letter-spacing: 1px;
         }
         p {
             color: #555;
@@ -40,6 +41,10 @@
             max-width: 100%;
             border-radius: 10px;
             margin: 20px 0;
+            transition: transform 0.5s;
+        }
+        img:hover {
+            transform: scale(1.1);
         }
         button {
             margin: 10px;
@@ -50,11 +55,12 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.3s;
+            transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
         }
         button:hover {
             transform: scale(1.1);
             background-color: #ff3355;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
         }
         @keyframes fadeIn {
             from {
