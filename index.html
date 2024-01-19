@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Digital Love Proposal 💖</title>
+    <title>A Beautiful Love Proposal 💖</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background-color: #f7f7f7;
+            background-color: #ffe6e6;
             margin: 0;
             padding: 20px;
         }
@@ -19,31 +19,37 @@
             background-color: #ffffff;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1s;
         }
         h1 {
-            color: #e44d26;
+            color: #ff4d6d;
             font-size: 36px;
+            margin-bottom: 20px;
         }
         p {
-            color: #333;
-            font-size: 20px;
+            color: #555;
+            font-size: 18px;
             margin-bottom: 20px;
+            line-height: 1.5;
         }
         button {
             margin: 10px;
-            background-color: #e44d26;
+            background-color: #ff4d6d;
             color: #fff;
             padding: 15px 30px;
             font-size: 18px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.2s, background-color 0.3s;
         }
         button:hover {
             transform: scale(1.1);
+            background-color: #ff3355;
         }
         #no-button {
             background-color: #555;
@@ -53,16 +59,36 @@
         }
         #surprise {
             display: none;
-            color: #e44d26;
+            color: #ff4d6d;
             font-size: 24px;
             margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
 
 <div id="container">
-    <h1>A Digital Love Proposal 💖</h1>
+    <h1>A Beautiful Love Proposal 💖</h1>
     <p>Hey [Girlfriend's Name],</p>
     <p>As you unlock your iPhone and visit this page, know that my heart beats a little faster, and a smile finds its way to my face. 📱💕</p>
     <p>If your answer is "Yes," click the button below:</p>
@@ -80,7 +106,10 @@
 
 <script>
     function redirectToSurprise() {
-        window.location.href = "surprise.html";
+        document.getElementById('container').style.animation = 'fadeOut 1s';
+        setTimeout(function() {
+            window.location.href = "surprise.html";
+        }, 800);
     }
 
     function rejectProposal() {
@@ -88,7 +117,7 @@
     }
 
     setTimeout(function() {
-        document.getElementById("yes-buttons").style.display = "block";
+        document.getElementById("yes-buttons").style.display = "flex";
     }, 3000); // Uncomment this line if you want to display the extra "Yes" buttons after a delay.
 </script>
 
