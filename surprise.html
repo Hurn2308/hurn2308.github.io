@@ -4,7 +4,7 @@
     <audio autoplay muted>
         <source src="https://mumn.ummn.nu/api/v1/download?sig=NEVkKqOaZ60uWizffv4%2FccDKFCsSqVJVS131iCmYu2%2Fbr8mOl3zZSgCzu%2B3VkdfmGWdk5U7%2FQK1NGBKqygxrJPFfHJoqJjlgUDyr9OYNBPtwvv3kgUqZBbWGGYdkNQFQYsDKKvaeD6wKjRyf2ZoiTnOs8jwqftTFIhRoMgrq5Q0haW8UVbCbpnfUzsB6GQV3IReFfssadwgbzBfkmIxl5ryBSb51Gjy0%2Bbq86HJPlGvuNfnyAvE%2BBYh%2FagDiJ9dr%2BLV2SgmQsmQsCPRQ6hmS8UU0y07ZXr%2B8m%2F62FpvHAbSsj63NwDmD%2FVZv4GiPn8Sstifd1rDgCJrmG28fe2ca%2Bw%3D%3D&v=v=JoFkQ7iAQcw,JoFkQ7iAQcw&_=0.042543399632951395" type="audio/mp3">
         Your browser does not support the audio element.
-    </audio>    
+    </audio>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,41 +13,42 @@
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background-color: #ffe6e6;
+            background-color: #1a1a2e;
             margin: 0;
             padding: 20px;
+            color: #fff;
         }
         #surprise-container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #ffffff;
+            background-color: #1a1a2e;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            animation: fadeIn 1s;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
         h1 {
             color: #ff4d6d;
-            font-size: 36px;
+            font-size: 2em;
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
         p {
-            color: #555;
-            font-size: 18px;
+            font-size: 1.2em;
             margin-bottom: 20px;
             line-height: 1.5;
         }
-        img {
+        img.surprise-image {
             max-width: 100%;
             border-radius: 10px;
             margin: 20px 0;
             transition: transform 0.5s;
         }
-        img:hover {
+        img.surprise-image:hover {
             transform: scale(1.1);
         }
         button {
@@ -55,7 +56,7 @@
             background-color: #ff4d6d;
             color: #fff;
             padding: 15px 30px;
-            font-size: 18px;
+            font-size: 1.2em;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -66,12 +67,53 @@
             background-color: #ff3355;
             box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
         }
+        #confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            pointer-events: none;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff4d6d;
+            opacity: 0.8;
+            border-radius: 50%;
+            transform-origin: 50% 50%;
+            animation: confetti-fall 4s linear infinite;
+        }
+        #love-notes {
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .love-note {
+            background-color: #ff4d6d;
+            color: #fff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 45%;
+        }
+        .love-note:hover {
+            background-color: #ff3355;
+        }
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
             to {
                 opacity: 1;
+            }
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(800px) rotate(360deg);
             }
         }
     </style>
@@ -82,15 +124,38 @@
     <h1>🎉 Surprise! 🎉</h1>
     <p>Congratulations on saying "Yes"! 🥳</p>
     <p>Let's celebrate this special moment together with a beautiful surprise:</p>
-    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/10248.jpg" alt="Love and joy">
+    <div id="love-notes">
+        <div class="love-note">You make my heart skip a beat every day. 💓</div>
+        <div class="love-note">Our journey together is my favorite story. 📖</div>
+        <div class="love-note">With you, every moment is special. ⌛</div>
+        <div class="love-note">You are the music to my heart. 🎶</div>
+    </div>
+    <img class="surprise-image" src="https://4kwallpapers.com/images/walls/thumbs_3t/10248.jpg" alt="Love and joy">
     <p>Thank you for making my day extra special. 💖</p>
     <button onclick="goBack()">Go Back</button>
 </div>
+<div id="confetti"></div>
 
 <script>
     function goBack() {
         window.history.back();
     }
+
+    // Function to create confetti elements
+    function createConfetti() {
+        const confettiContainer = document.getElementById('confetti');
+
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+            confettiContainer.appendChild(confetti);
+        }
+    }
+
+    // Execute confetti creation after the surprise page is loaded
+    document.addEventListener('DOMContentLoaded', createConfetti);
 </script>
 
 </body>
