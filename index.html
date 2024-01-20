@@ -17,7 +17,7 @@
         #container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -29,21 +29,21 @@
         }
         h1 {
             color: #ff4d6d;
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
         p {
-            font-size: 1.3em;
+            font-size: 1.4em;
             margin-bottom: 20px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         button {
             margin: 15px;
             background-color: #ff4d6d;
             color: #fff;
             padding: 20px 40px;
-            font-size: 1.3em;
+            font-size: 1.4em;
             border: none;
             border-radius: 15px;
             cursor: pointer;
@@ -55,12 +55,32 @@
             box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
         }
         #countdown {
-            font-size: 1.5em;
+            font-size: 1.8em;
             margin-top: 20px;
+            font-weight: bold;
         }
         #heart-shower {
-            font-size: 3em;
+            font-size: 4em;
             animation: heartShower 2s infinite;
+        }
+        #message {
+            font-size: 1.5em;
+            font-style: italic;
+            color: #555;
+            margin: 20px 0;
+        }
+        #background-slideshow {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        #background-slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease-in-out;
         }
         @keyframes fadeIn {
             to {
@@ -80,6 +100,23 @@
                 opacity: 0;
             }
         }
+        @keyframes slideshow {
+            0% {
+                transform: translateX(0%);
+            }
+            25% {
+                transform: translateX(-25%);
+            }
+            50% {
+                transform: translateX(-50%);
+            }
+            75% {
+                transform: translateX(-75%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 <body>
@@ -88,12 +125,18 @@
     <h1>A Beautiful Love Proposal 💖</h1>
     <p id="greeting"></p>
     <p>As you unlock your iPhone and visit this page, know that my heart beats a little faster, and a smile finds its way to my face. 📱💕</p>
+    <div id="background-slideshow" onclick="redirectToSurprise()">
+        <img src="https://drive.google.com/file/d/1NHO8oFuCGQ7TD4mqTG2BuXIJrJ1X2_Eu/view?usp=drivesdk" alt="Love in every moment">
+        <img src="https://drive.google.com/file/d/1MuZ5PpOiXck-l_XM7DrYyzo6_uE-GiQK/view?usp=drivesdk" alt="Our beautiful journey">
+        <img src="https://drive.google.com/file/d/1iiCnE20FRaID3jQizuNyuXDEgisJUInp/view?usp=drivesdk" alt="Together forever">
+    </div>
     <p>If your answer is "Yes," click the button below:</p>
     <button onclick="redirectToSurprise()">Yes, I'll be your forever Valentine!</button>
     <p>If your answer is "No," click the button below:</p>
     <button onclick="redirectToNoPage()">No, I need more time.</button>
     <p id="countdown"></p>
     <div id="heart-shower">❤️</div>
+    <p id="message">"Love is not just something. Love is everything."</p>
     <p id="surprise">P.S. Check your messages for a little surprise. 😉</p>
 </div>
 
