@@ -9,7 +9,7 @@
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #fcefee 10%, #ffdef9 100%);
             margin: 0;
             padding: 20px;
             color: #333;
@@ -17,34 +17,35 @@
         #container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            animation: fadeIn 1s;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
         h1 {
             color: #ff4d6d;
-            font-size: 36px;
+            font-size: 2.5em;
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
         p {
-            font-size: 18px;
+            font-size: 1.3em;
             margin-bottom: 20px;
             line-height: 1.5;
         }
         button {
-            margin: 10px;
+            margin: 15px;
             background-color: #ff4d6d;
             color: #fff;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 20px 40px;
+            font-size: 1.3em;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             cursor: pointer;
             transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
         }
@@ -53,12 +54,30 @@
             background-color: #ff3355;
             box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
         }
+        #countdown {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        #heart-shower {
+            font-size: 3em;
+            animation: heartShower 2s infinite;
+        }
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
             to {
                 opacity: 1;
+            }
+        }
+        @keyframes heartShower {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(200px);
+                opacity: 0;
             }
         }
     </style>
@@ -67,26 +86,62 @@
 
 <div id="container">
     <h1>A Beautiful Love Proposal 💖</h1>
-    <p>Hey [Girlfriend's Name],</p>
+    <p id="greeting"></p>
     <p>As you unlock your iPhone and visit this page, know that my heart beats a little faster, and a smile finds its way to my face. 📱💕</p>
     <p>If your answer is "Yes," click the button below:</p>
-    <button onclick="redirectToSurprise()">Yes, I'll be your Valentine!</button>
+    <button onclick="redirectToSurprise()">Yes, I'll be your forever Valentine!</button>
     <p>If your answer is "No," click the button below:</p>
-    <button id="no-button" onclick="redirectToNoPage()">No, I'm not ready.</button>
+    <button onclick="redirectToNoPage()">No, I need more time.</button>
+    <p id="countdown"></p>
+    <div id="heart-shower">❤️</div>
     <p id="surprise">P.S. Check your messages for a little surprise. 😉</p>
 </div>
 
 <script>
     function redirectToSurprise() {
         document.getElementById('container').style.animation = 'fadeOut 1s';
-        setTimeout(function() {
-            window.location.href = "surprise.html";
-        }, 800);
+        setTimeout(() => window.location.href = "surprise.html", 800);
     }
 
     function redirectToNoPage() {
         window.location.href = "no-page.html";
     }
+
+    function updateGreeting() {
+        const greetingElement = document.getElementById('greeting');
+        const currentTime = new Date().getHours();
+
+        if (currentTime >= 5 && currentTime < 12) {
+            greetingElement.textContent = "Good morning,";
+        } else if (currentTime >= 12 && currentTime < 17) {
+            greetingElement.textContent = "Good afternoon,";
+        } else {
+            greetingElement.textContent = "Good evening,";
+        }
+    }
+
+    function updateCountdown() {
+        const countdownElement = document.getElementById('countdown');
+        const proposalDate = new Date("February 14, 2024 00:00:00 GMT+00:00").getTime();
+        const now = new Date().getTime();
+        const timeDifference = proposalDate - now;
+
+        if (timeDifference > 0) {
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            countdownElement.textContent = `Time until the proposal: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        } else {
+            countdownElement.textContent = "The moment has arrived!";
+        }
+    }
+
+    setInterval(() => {
+        updateGreeting();
+        updateCountdown();
+    }, 1000);
 </script>
 
 </body>
