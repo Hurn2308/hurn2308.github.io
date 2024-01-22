@@ -8,21 +8,21 @@
     <title>Please Say Yes 💖</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Verdana', sans-serif;
             text-align: center;
-            background: linear-gradient(135deg, #fcefee 10%, #ffdef9 100%);
+            background: linear-gradient(135deg, #f6d365 10%, #ffa69e 100%);
             margin: 0;
             padding: 20px;
-            color: #333;
+            color: #fff;
         }
 
         #container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -170,21 +170,21 @@
     <div id="container">
         <h1>My Valentine's Proposal to my Kikapoo 💖</h1>
         <p id="greeting"></p>
-        <p>As you read the messages on this page, know that I am super nervous because eventhough we are together I dont know if you will accept this proposal, since it's a bit lame. 💕</p>
+        <p>As you read the messages on this page, know that I am super nervous because even though we are together, I don't know if you will accept this proposal, since it's a bit lame. 💕</p>
         <div id="background-slideshow" onclick="redirectToSurprise()">
             <img src="https://i.ibb.co/z2wQbP9/IMG-8618.jpg" alt="Love in every moment">
             <img src="https://i.ibb.co/kQTMmVz/IMG-2443.jpg" alt="Our beautiful journey">
             <img src="https://i.ibb.co/kQTMmVz/IMG-2443.jpg" alt="IMG-2443" border="0" />
         </div>
         <div id="flower-shower">🌸</div>
-        <p>If your answer is "Yes," please click the button below:</p>
+        <p>I'm sending this to ask if you'll do me the honours and be my valentine this year and hopefully forever. Every moment I spend with you is the favorite parts of my life and I hope you'll let valentines this year be apart of those moments. I know I'm not the best boyfriend all the time but I will improve to be the better for you. I love you the mostest giantest astronomicalest in the world. So please accept my proposal. If your answer is "Yes," please click the button below:</p>
         <button onclick="redirectToSurprise()">Yes, I'll be your Valentine</button>
         <p>If your answer is "No," please click the button below:</p>
         <button onclick="redirectToNoPage()">No, I need more time.</button>
         <p id="countdown"></p>
         <div id="heart-shower">❤️</div>
         <p id="message">"Love is not just something. Love is everything. You are everything to me."</p>
-        <p id="surprise">I hope the only images that play when I die is every moment I would have spent with you </p>
+        <p id="surprise">I hope the only images that play when I die are every moment I would have spent with you </p>
     </div>
 
     <script>
@@ -202,11 +202,11 @@
             const currentTime = new Date().getHours();
 
             if (currentTime >= 5 && currentTime < 12) {
-                greetingElement.textContent = "Good morning my sunshine and happiness,";
+                greetingElement.textContent = "Good morning, my sunshine and happiness,";
             } else if (currentTime >= 12 && currentTime < 17) {
-                greetingElement.textContent = "Good afternoon my gorgeous girl,";
+                greetingElement.textContent = "Good afternoon, my gorgeous girl,";
             } else {
-                greetingElement.textContent = "Good evening my love,";
+                greetingElement.textContent = "Good evening, my love,";
             }
         }
 
